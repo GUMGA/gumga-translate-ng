@@ -8,16 +8,11 @@
     </head>
     <body data-ng-controller="ctrl">
       <h1>Gumga Translate</h1>
-      <form name="Example">
-        <!--<gumga-query search="simple(field, param)" advanced-search="advanced(param)" search-text="Pesquisar">
-          <search-field field="name" label="Nome" select="true" ></search-field>
-          <search-field field="age"  label="Idade"></search-field>
-          <advanced-search-field type="string"  label="Nome"    field="nome"></advanced-search-field>
-          <advanced-search-field type="number"  label="Idade"   field="idade"></advanced-search-field>
-          <advanced-search-field type="float"   label="Peso"    field="peso"></advanced-search-field>
-          <advanced-search-field type="money"   label="Preço"   field="preco"></advanced-search-field>
-        </gumga-query>-->
+
+      <form name="Example" class="container" gumga-translate="pt-br">
+        <label gumga-translate-tag="person.name">person.name</label>
       </form>
+
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script src="../node_modules/angular/angular.min.js"></script>
@@ -26,11 +21,11 @@
       angular
         .module('app',['gumga.translate'])
         .config(function($gumgaTranslateProvider) {
-          console.log($gumgaTranslateProvider)
+          // console.log($gumgaTranslateProvider)
         })
         .controller('ctrl', ['$scope','$filter','GumgaTranslateHelper', function($scope, $filter,GumgaTranslateHelper) {
-          console.log($filter('gumgaTranslate')('name','person'))
-          console.log(GumgaTranslateHelper)
+          // console.log($filter('gumgaTranslate')('name','person'))
+          // console.log(GumgaTranslateHelper)
         }])
       </script>
     </body>

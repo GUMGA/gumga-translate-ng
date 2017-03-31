@@ -7,8 +7,8 @@
       $get: function ($http) {
         var self = this;
         $http.get('/i18n/' + self._language + '.json')
-          .success(function SuccessGet(values) {
-            localStorage.setItem('GUMGA' + self._language, JSON.stringify(values));
+          .then(function SuccessGet(values) {
+            localStorage.setItem('GUMGA' + self._language, JSON.stringify(values.data));
             localStorage.setItem('GUMGACurrent', self._language);
           })
         return self;
