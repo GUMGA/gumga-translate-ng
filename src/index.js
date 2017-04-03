@@ -13,6 +13,6 @@ angular.module('gumga.translate', [
     'gumga.translate.filter',
     'gumga.translate.provider',
     'gumga.translate.directive',
-    'gumga.translate.directives.translatetag',
+    'gumga.translate.directive.translatetag',
     'gumga.translate.directive.translatehelper'
   ])

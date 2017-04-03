@@ -58,7 +58,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     };
   }
 
-  angular.module('gumga.translate.directives.translatetag', ['gumga.translate.directive.translatehelper']).directive('gumgaTranslateTag', TranslateTag);
+  angular.module('gumga.translate.directive.translatetag', ['gumga.translate.directive.translatehelper']).directive('gumgaTranslateTag', TranslateTag);
 })();
 
 },{}],3:[function(require,module,exports){
@@ -89,15 +89,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 },{}],4:[function(require,module,exports){
 'use strict';
 
-TranslateFilter.$inject = ['GumgaTranslateHelper', '$timeout'];
+TranslateFilter.$inject = ['TranslateHelper', '$timeout'];
 
-function TranslateFilter(GumgaTranslateHelper, $timeout) {
+function TranslateFilter(TranslateHelper, $timeout) {
   return function translate(value, entity) {
     if (value) {
       if (!angular.isString(value)) throw 'É necessário passar uma string para o filtro gumgaTranslate';
       var stringToTranslate = entity ? entity.toLowerCase().concat('.').concat(value ? value.toLowerCase() : ' ') : value ? value.toLowerCase() : ' ';
 
-      return GumgaTranslateHelper.returnTranslation(stringToTranslate) || value;
+      return TranslateHelper.returnTranslation(stringToTranslate) || value;
     }
     return value;
   };
@@ -172,7 +172,7 @@ require('./directive/translate/translate.js');
 require('./directive/helper/helper.js');
 require('./directive/translate-tag/translate-tag.js');
 
-angular.module('gumga.translate', ['gumga.translate.helper', 'gumga.translate.filter', 'gumga.translate.provider', 'gumga.translate.directive', 'gumga.translate.directives.translatetag', 'gumga.translate.directive.translatehelper']);
+angular.module('gumga.translate', ['gumga.translate.helper', 'gumga.translate.filter', 'gumga.translate.provider', 'gumga.translate.directive', 'gumga.translate.directive.translatetag', 'gumga.translate.directive.translatehelper']);
 
 },{"./directive/helper/helper.js":1,"./directive/translate-tag/translate-tag.js":2,"./directive/translate/translate.js":3,"./filter/filter.js":4,"./helper/helper.js":5,"./provider/provider.js":7}],7:[function(require,module,exports){
 'use strict';

@@ -11,6 +11,10 @@
 
       <form name="Example" class="container" gumga-translate="pt-br">
         <label gumga-translate-tag="person.name">person.name</label>
+        <br>
+        <br>
+        <label ng-if="mostrar">{{true ? 'active':'inactive' | gumgaTranslate: 'person'}}</label>
+
       </form>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -23,9 +27,12 @@
         .config(function($gumgaTranslateProvider) {
           // console.log($gumgaTranslateProvider)
         })
-        .controller('ctrl', ['$scope','$filter','GumgaTranslateHelper', function($scope, $filter,GumgaTranslateHelper) {
+        .controller('ctrl', ['$scope','$filter','GumgaTranslateHelper', '$timeout', function($scope, $filter,GumgaTranslateHelper, $timeout) {
           // console.log($filter('gumgaTranslate')('name','person'))
           // console.log(GumgaTranslateHelper)
+          $timeout(function(){
+            $scope.mostrar = true;
+          }, 3000)
         }])
       </script>
     </body>

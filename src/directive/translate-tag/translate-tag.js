@@ -21,6 +21,6 @@
     };
   }
 
-  angular.module('gumga.translate.directives.translatetag',['gumga.translate.directive.translatehelper'])
+  angular.module('gumga.translate.directive.translatetag',['gumga.translate.directive.translatehelper'])
   .directive('gumgaTranslateTag',TranslateTag);
 })();

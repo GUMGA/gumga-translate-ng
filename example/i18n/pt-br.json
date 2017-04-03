@@ -1,5 +1,6 @@
 {
   "person": {
-    "name": "Nome Completo"
+    "name": "Nome Completo",
+    "active" : "Pessoa Ativa"
   }
 }

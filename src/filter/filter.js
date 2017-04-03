@@ -1,8 +1,8 @@
 'use strict';
 
-TranslateFilter.$inject = ['GumgaTranslateHelper', '$timeout'];
+TranslateFilter.$inject = ['TranslateHelper', '$timeout'];
 
-function TranslateFilter(GumgaTranslateHelper, $timeout){
+function TranslateFilter(TranslateHelper, $timeout){
   return function translate(value, entity){
     if(value) {
       if(!angular.isString(value)) throw 'É necessário passar uma string para o filtro gumgaTranslate';
@@ -10,7 +10,7 @@ function TranslateFilter(GumgaTranslateHelper, $timeout){
           entity.toLowerCase().concat('.').concat(value ? value.toLowerCase() : ' ')
         : (value ? value.toLowerCase() : ' ');
 
-      return GumgaTranslateHelper.returnTranslation(stringToTranslate) || value;
+      return TranslateHelper.returnTranslation(stringToTranslate) || value;
     }
     return value;
   };
