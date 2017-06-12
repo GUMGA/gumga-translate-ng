@@ -12,7 +12,7 @@
         <h1>Gumga Translate</h1>
 
         <form name="Example" class="container" gumga-translate="pt-br">
-          <label gumga-translate-tag="person.name">person.name</label>
+          <label gumga-translate-tag="pessoa.title">person.name</label>
           <br>
           <br>
           <label ng-if="mostrar">{{true ? 'active':'inactive' | gumgaTranslate: 'person'}}</label>
@@ -28,15 +28,15 @@
       angular
         .module('app',['gumga.translate'])
         .config(function($gumgaTranslateProvider) {
-          // $gumgaTranslateProvider.setURL('http://192.168.25.250/gileadeweb-api/public/i18n');
+          $gumgaTranslateProvider.setURL('http://192.168.25.250/gileadeweb-api/public/i18n');
           // console.log($gumgaTranslateProvider)
         })
-        .controller('ctrl', ['$scope','$filter','GumgaTranslateHelper', '$timeout', function($scope, $filter,GumgaTranslateHelper, $timeout) {
+        .controller('ctrl', ['$scope','$filter', '$timeout', function($scope, $filter, $timeout) {
           // console.log($filter('gumgaTranslate')('name','person'))
           // console.log(GumgaTranslateHelper)
-          $timeout(function(){
-            $scope.mostrar = true;
-          }, 3000)
+          // $timeout(function(){
+          //   $scope.mostrar = true;
+          // }, 3000)
         }])
       </script>
     </body>

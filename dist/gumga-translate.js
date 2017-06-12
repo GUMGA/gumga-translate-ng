@@ -145,9 +145,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 (function () {
-	'use strict';
 
-	Translate.$inject = ['$http', 'TranslateHelper', '$timeout', '$gumgaTranslate'];
 	function Translate($http, TranslateHelper, $timeout, $gumgaTranslate) {
 		var ch = 0;
 		return {
@@ -163,6 +161,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			}
 		};
 	}
+
+	Translate.$inject = ['$http', 'TranslateHelper', '$timeout', '$gumgaTranslate'];
 
 	angular.module('gumga.translate.directive', ['gumga.translate.directive.translatehelper']).directive('gumgaTranslate', Translate);
 })();
@@ -263,7 +263,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   Translate.$inject = [];
   function Translate() {
     return {
-      $get: function $get($http) {
+      $get: ['$http', function ($http) {
         var self = this;
         this._url = this._url || '/i18n/' + self._language + '.json';
         $http.get(this._url).then(function SuccessGet(values) {
@@ -271,7 +271,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           localStorage.setItem('GUMGACurrent', self._language);
         });
         return self;
-      },
+      }],
       setLanguage: function setLanguage(language) {
         if (!language) throw 'You must pass a language to GumgaTranslate';
         this._language.toLowerCase() !== language.toLowerCase() ? this._language = language : function () {};
@@ -295,15 +295,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 "use strict";
 
 
+__webpack_require__(5);
 __webpack_require__(4);
 __webpack_require__(3);
-__webpack_require__(5);
 
-__webpack_require__(2);
 __webpack_require__(0);
 __webpack_require__(1);
+__webpack_require__(2);
 
-angular.module('gumga.translate', ['gumga.translate.helper', 'gumga.translate.filter', 'gumga.translate.provider', 'gumga.translate.directive', 'gumga.translate.directive.translatetag', 'gumga.translate.directive.translatehelper']);
+angular.module('gumga.translate', ['gumga.translate.provider', 'gumga.translate.filter', 'gumga.translate.helper', 'gumga.translate.directive', 'gumga.translate.directive.translatetag', 'gumga.translate.directive.translatehelper']);
 
 /***/ })
 /******/ ]);

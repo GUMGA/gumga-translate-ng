@@ -4,7 +4,7 @@
   Translate.$inject = [];
   function Translate() {
     return {
-      $get: function ($http) {
+      $get: ['$http', function ($http) {
         var self = this;
         this._url = this._url || '/i18n/' + self._language + '.json';
         $http.get(this._url)
@@ -13,7 +13,7 @@
             localStorage.setItem('GUMGACurrent', self._language);
           })
         return self;
-      },
+      }],
       setLanguage: function (language) {
         if (!language) throw 'You must pass a language to GumgaTranslate';
         this._language.toLowerCase() !== language.toLowerCase() ? this._language = language : function () { };
