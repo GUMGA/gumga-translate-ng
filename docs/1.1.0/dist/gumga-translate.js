@@ -1,77 +1,5 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/dist/";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -103,12 +31,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	angular.module('gumga.translate.directive.translatehelper', []).factory('TranslateHelper', TranslateHelper);
 })();
 
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+},{}],2:[function(require,module,exports){
+'use strict';
 
 (function () {
   'use strict';
@@ -137,18 +61,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   angular.module('gumga.translate.directive.translatetag', ['gumga.translate.directive.translatehelper']).directive('gumgaTranslateTag', TranslateTag);
 })();
 
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+},{}],3:[function(require,module,exports){
+'use strict';
 
 (function () {
 	'use strict';
 
-	Translate.$inject = ['$http', 'TranslateHelper', '$timeout', '$gumgaTranslate'];
-	function Translate($http, TranslateHelper, $timeout, $gumgaTranslate) {
+	Translate.$inject = ['$http', 'TranslateHelper', '$timeout'];
+	function Translate($http, TranslateHelper, $timeout) {
 		var ch = 0;
 		return {
 			restrict: 'AEC',
@@ -156,8 +76,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			priority: 9999,
 			link: function link($scope, $elm, $attrs) {
 				var language = $attrs.gumgaTranslate.toLowerCase() || navigator.language.toLowerCase();
-
-				$http.get($gumgaTranslate.getURL()).then(function (values) {
+				$http.get('./i18n/' + language + '.json').then(function (values) {
 					TranslateHelper.setTranslators(language, values.data);
 				});
 			}
@@ -167,12 +86,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	angular.module('gumga.translate.directive', ['gumga.translate.directive.translatehelper']).directive('gumgaTranslate', Translate);
 })();
 
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+},{}],4:[function(require,module,exports){
+'use strict';
 
 TranslateFilter.$inject = ['TranslateHelper', '$timeout'];
 
@@ -190,12 +105,8 @@ function TranslateFilter(TranslateHelper, $timeout) {
 
 angular.module('gumga.translate.filter', ['gumga.translate.helper']).filter('gumgaTranslate', TranslateFilter);
 
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+},{}],5:[function(require,module,exports){
+'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -250,12 +161,21 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	angular.module('gumga.translate.helper', []).factory('GumgaTranslateHelper', TranslateHelper);
 })();
 
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
+},{}],6:[function(require,module,exports){
+'use strict';
 
-"use strict";
+require('./helper/helper.js');
+require('./filter/filter.js');
+require('./provider/provider.js');
 
+require('./directive/translate/translate.js');
+require('./directive/helper/helper.js');
+require('./directive/translate-tag/translate-tag.js');
+
+angular.module('gumga.translate', ['gumga.translate.helper', 'gumga.translate.filter', 'gumga.translate.provider', 'gumga.translate.directive', 'gumga.translate.directive.translatetag', 'gumga.translate.directive.translatehelper']);
+
+},{"./directive/helper/helper.js":1,"./directive/translate-tag/translate-tag.js":2,"./directive/translate/translate.js":3,"./filter/filter.js":4,"./helper/helper.js":5,"./provider/provider.js":7}],7:[function(require,module,exports){
+'use strict';
 
 (function () {
   'use strict';
@@ -265,8 +185,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     return {
       $get: function $get($http) {
         var self = this;
-        this._url = this._url || '/i18n/' + self._language + '.json';
-        $http.get(this._url).then(function SuccessGet(values) {
+        $http.get('/i18n/' + self._language + '.json').then(function SuccessGet(values) {
           localStorage.setItem('GUMGA' + self._language, JSON.stringify(values.data));
           localStorage.setItem('GUMGACurrent', self._language);
         });
@@ -276,34 +195,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         if (!language) throw 'You must pass a language to GumgaTranslate';
         this._language.toLowerCase() !== language.toLowerCase() ? this._language = language : function () {};
       },
-      _language: 'pt-br',
-      setURL: function setURL(url) {
-        this._url = url;
-      },
-      getURL: function getURL() {
-        return this._url;
-      }
+      _language: 'pt-br'
     };
   }
   angular.module('gumga.translate.provider', []).provider('$gumgaTranslate', Translate);
 })();
 
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-__webpack_require__(4);
-__webpack_require__(3);
-__webpack_require__(5);
-
-__webpack_require__(2);
-__webpack_require__(0);
-__webpack_require__(1);
-
-angular.module('gumga.translate', ['gumga.translate.helper', 'gumga.translate.filter', 'gumga.translate.provider', 'gumga.translate.directive', 'gumga.translate.directive.translatetag', 'gumga.translate.directive.translatehelper']);
-
-/***/ })
-/******/ ]);
+},{}]},{},[6]);
