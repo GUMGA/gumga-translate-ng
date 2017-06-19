@@ -6,7 +6,7 @@
     return {
       $get: ['$http', function ($http) {
         var self = this;
-        this._url = this._url || '/i18n/' + self._language + '.json';
+        this._url = this._url || './i18n/' + self._language + '.json';
         $http.get(this._url)
           .then(function SuccessGet(values) {
             localStorage.setItem('GUMGA' + self._language, JSON.stringify(values.data));
